@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-scroll';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import resume from '../assets/portfolio/ZekiTURAN-CV.pdf';
 
 const NavBar = () => {
     const [nav, setNav] = useState(false);
@@ -33,6 +37,19 @@ const NavBar = () => {
             <div>
                 <h1 className="text-5xl font-signature ml-2">Zeki</h1>
             </div>
+            <a href="https://www.linkedin.com/in/zeki-fatih-turan-95a66022a/">
+                <FaLinkedin className="md:hidden rounded-tr-md" size={30} />
+            </a>
+            <a href="https://github.com/ZeckeyBay">
+                <FaGithub className="md:hidden" size={30} />
+            </a>
+            <a href="mailto:fatererfat1997@gmail.com">
+                <HiOutlineMail className="md:hidden" size={30} />
+            </a>
+
+            <a href={resume}>
+                <BsFillPersonLinesFill className="md:hidden rounded-br-md" size={30} />
+            </a>
 
             <ul className="hidden md:flex">
                 {links.map(({ id, link }) => (
@@ -49,15 +66,17 @@ const NavBar = () => {
             </div>
 
             {nav && (
-                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
-                    {links.map(({ id, link }) => (
-                        <li key={id} className="px-4 cursor-pointer capitalize py-6 text-4xl">
-                            <Link onClick={() => setNav(!nav)} to={link} smooth duration={500}>
-                                {link}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <>
+                    <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+                        {links.map(({ id, link }) => (
+                            <li key={id} className="px-4 cursor-pointer capitalize py-6 text-4xl">
+                                <Link onClick={() => setNav(!nav)} to={link} smooth duration={500}>
+                                    {link}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </>
             )}
         </div>
     );
